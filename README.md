@@ -14,8 +14,8 @@ Antes de começar, leia o guia referente ao seu papel:
 
 ---
 ## 👥 Integrantes do Grupo
-* **Líder:** [Seu Nome]
-* **Membro 2:** [Nome]
+* **Líder:** [Jairo L. Alves](https://github.com/jairoLAlves)
+* **Membro 2:** [Th4mz0](https://github.com/TH4MZ0)
 * **Membro 3:** [Nome]
 * **Membro 4:** [Nome]
 * **Membro 5:** [Nome]
@@ -25,7 +25,7 @@ Antes de começar, leia o guia referente ao seu papel:
 O Líder deve marcar as caixas abaixo conforme o grupo avança (`[x]`):
 
 ### Fase 1: Configuração
-- [ ] Setup Inicial (Projeto Clonado e Commitado)
+- [x] Setup Inicial (Projeto Clonado e Commitado)
 - [x] Estrutura de Pastas (`br.com.banco`) definida
 
 ### Fase 2: Implementação (Java)
