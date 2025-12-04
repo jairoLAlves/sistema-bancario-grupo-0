@@ -10,14 +10,22 @@ public class ContaCorrente extends Conta {
 
     @Override
     public boolean sacar(double valor) {
-        // Verifica se o valor é coberto pelo saldo + limite
-        if (valor > 0 && (this.saldo + this.limiteChequeEspecial) >= valor) {
+        double saldoDisponivel = this.saldo + this.limiteChequeEspecial;
+
+        if (valor > 0 && valor <= saldoDisponivel) {
             this.saldo -= valor;
-            System.out.println("Saque de R$ " + valor + " realizado (Conta Corrente) de " + this.titular);
+            System.out.println("Saque de R$ " + valor + " realizado na Conta Corrente.");
             return true;
         } else {
-            System.out.println("Saque insucesso na conta de " + this.titular + " (Saldo + Limite insuficientes)");
+            System.out.println("Saldo insuficiente (incluindo cheque especial) para saque de R$ " + valor);
             return false;
         }
+    }
+
+    @Override
+    public void exibirSaldo() {
+        super.exibirSaldo();
+        System.out.println(" -> Limite Cheque Especial: R$ " + this.limiteChequeEspecial);
+        System.out.println(" -> Saldo Total Disponível: R$ " + (this.saldo + this.limiteChequeEspecial));
     }
 }

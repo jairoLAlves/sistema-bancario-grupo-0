@@ -5,9 +5,6 @@ import br.com.banco.model.ContaSalario;
 
 public class Main {
     public static void main(String[] args) {
-
-        System.out.println("=== INICIANDO SISTEMA BANCÁRIO ===");
-
         System.out.println("=== INICIANDO SISTEMA BANCÁRIO ===");
 
         // 1. Criação das Contas
