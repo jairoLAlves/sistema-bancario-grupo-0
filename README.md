@@ -59,8 +59,8 @@ O Líder deve marcar as caixas abaixo conforme o grupo avança (`[x]`):
 
 ### Fase 3: Entrega
 - [x] Testes na `Main.java` realizados
-- [ ] Vídeo demonstrativo gravado
-- [ ] Link do vídeo adicionado abaixo
+- [x] Vídeo demonstrativo gravado
+- [x] Link do vídeo adicionado abaixo
 
 ---
-**🎥 Link do Vídeo:** (Cole o link aqui)
+**🎥 Link do Vídeo:** (https://www.youtube.com/watch?v=Iy-bqElsqpc)
