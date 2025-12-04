@@ -16,9 +16,7 @@ Antes de começar, leia o guia referente ao seu papel:
 ## 👥 Integrantes do Grupo
 * **Líder:** [Jairo L. Alves](https://github.com/jairoLAlves)
 * **Membro 2:** [Th4mz0](https://github.com/TH4MZ0)
-* **Membro 3:** [Nome]
-* **Membro 4:** [Nome]
-* **Membro 5:** [Nome]
+
 
 ## 📋 Backlog do Projeto (Status)
 
@@ -29,10 +27,35 @@ O Líder deve marcar as caixas abaixo conforme o grupo avança (`[x]`):
 - [x] Estrutura de Pastas (`br.com.banco`) definida
 
 ### Fase 2: Implementação (Java)
-- [ ] **Classe Conta (Abstrata)** implementada
-- [ ] **Conta Corrente** (com Cheque Especial) finalizada
-- [ ] **Conta Poupança** (com Rendimento) finalizada
-- [ ] **Conta Salário** (com Bloqueios) finalizada
+
+#### Uso de Herança e classe abstrata:
+
+- [ ]  Crie uma classe base abstrata (ex.: Conta) que contenha os atributos e métodos comuns a todas as contas.
+
+- [ ]  A classe base abstrata permite garantir que as subclasses sobrescrevam os métodos **obrigatórios** (ex.: sacar, depositar, exibir Saldo e transferir).
+
+- [ ]  Cada tipo de conta (Corrente, Poupança e Salário) deverá ser uma subclasse que especializa a classe base e implementa os seus métodos abstratos de acordo com as suas particularidades.
+
+#### Modificadores de Acesso:
+
+- [ ]  Utilize modificadores de acesso (private, protected e public) para encapsular os atributos e métodos de forma adequada.
+
+- [ ]  Garanta que atributos sensíveis (ex.: saldo) não sejam modificados diretamente.
+
+#### Testes e Demonstração:
+
+- [ ]  Crie uma classe principal, contendo o método main que demonstre o funcionamento do sistema bancário.
+
+**Simule operações como:**
+
+- [ ]   Criação de contas.
+
+- [ ]  Realização de saques, depósitos e transferências.
+
+- [ ]  Aplicação do rendimento na conta poupança.
+
+- [ ]  Tentativa de transferir valores para uma conta salário (operação não permitida).
+
 
 ### Fase 3: Entrega
 - [ ] Testes na `Main.java` realizados
