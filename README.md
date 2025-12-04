@@ -30,35 +30,35 @@ O Líder deve marcar as caixas abaixo conforme o grupo avança (`[x]`):
 
 #### Uso de Herança e classe abstrata:
 
-- [ ]  Crie uma classe base abstrata (ex.: Conta) que contenha os atributos e métodos comuns a todas as contas.
+- [x]  Crie uma classe base abstrata (ex.: Conta) que contenha os atributos e métodos comuns a todas as contas.
 
-- [ ]  A classe base abstrata permite garantir que as subclasses sobrescrevam os métodos **obrigatórios** (ex.: sacar, depositar, exibir Saldo e transferir).
+- [x]  A classe base abstrata permite garantir que as subclasses sobrescrevam os métodos **obrigatórios** (ex.: sacar, depositar, exibir Saldo e transferir).
 
-- [ ]  Cada tipo de conta (Corrente, Poupança e Salário) deverá ser uma subclasse que especializa a classe base e implementa os seus métodos abstratos de acordo com as suas particularidades.
+- [x]  Cada tipo de conta (Corrente, Poupança e Salário) deverá ser uma subclasse que especializa a classe base e implementa os seus métodos abstratos de acordo com as suas particularidades.
 
 #### Modificadores de Acesso:
 
-- [ ]  Utilize modificadores de acesso (private, protected e public) para encapsular os atributos e métodos de forma adequada.
+- [x]  Utilize modificadores de acesso (private, protected e public) para encapsular os atributos e métodos de forma adequada.
 
-- [ ]  Garanta que atributos sensíveis (ex.: saldo) não sejam modificados diretamente.
+- [x]  Garanta que atributos sensíveis (ex.: saldo) não sejam modificados diretamente.
 
 #### Testes e Demonstração:
 
-- [ ]  Crie uma classe principal, contendo o método main que demonstre o funcionamento do sistema bancário.
+- [x]  Crie uma classe principal, contendo o método main que demonstre o funcionamento do sistema bancário.
 
 **Simule operações como:**
 
-- [ ]   Criação de contas.
+- [x]   Criação de contas.
 
-- [ ]  Realização de saques, depósitos e transferências.
+- [x]  Realização de saques, depósitos e transferências.
 
-- [ ]  Aplicação do rendimento na conta poupança.
+- [x]  Aplicação do rendimento na conta poupança.
 
-- [ ]  Tentativa de transferir valores para uma conta salário (operação não permitida).
+- [x]  Tentativa de transferir valores para uma conta salário (operação não permitida).
 
 
 ### Fase 3: Entrega
-- [ ] Testes na `Main.java` realizados
+- [x] Testes na `Main.java` realizados
 - [ ] Vídeo demonstrativo gravado
 - [ ] Link do vídeo adicionado abaixo
 
