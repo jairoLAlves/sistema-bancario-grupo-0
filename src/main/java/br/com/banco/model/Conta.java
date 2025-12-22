@@ -1,49 +1,94 @@
 package br.com.banco.model;
 
-public abstract class Conta {
-    // Encapsulamento: atributos protected permitem acesso pelas subclasses
-    protected String titular;
-    protected double saldo;
+import br.com.banco.enums.ContaT;
+import br.com.banco.enums.Operacao;
+import br.com.banco.exceptions.ContaEx;
+import br.com.banco.exceptions.OperacaoInvalida;
 
-    public Conta(String titular) {
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+public abstract class Conta {
+
+    private final UUID numeroConta;
+    protected final Titular titular;
+    protected final ContaT tipo;
+    protected double saldo;
+    protected final  LocalDateTime dataCriacao;
+    protected final List<Transacao> extrato;
+
+    public Conta(Titular titular, ContaT tipo) {
+        this.tipo = tipo;
+        this.numeroConta = UUID.randomUUID();
+        this.dataCriacao = LocalDateTime.now();
         this.titular = titular;
         this.saldo = 0.0;
+        this.extrato = new ArrayList<>();
     }
 
-    // Método abstrato: obriga as subclasses a implementarem sua própria lógica de saque
-    public abstract boolean sacar(double valor);
+    public abstract void sacar(double valor, Boolean isTransferido) throws OperacaoInvalida;
 
-    // Método concreto: igual para todas (exceto se quiséssemos regras específicas)
-    public void depositar(double valor) {
-        if (valor > 0) {
+    public void depositar(double valor, String descricao) throws OperacaoInvalida {
+
+        if(valor > 0){
             this.saldo += valor;
-            System.out.println("Depósito de R$ " + valor + " realizado na conta de " + this.titular);
-        } else {
-            System.out.println("Valor de depósito inválido.");
-        }
-    }
+            this.adicionarTransacao(
+                    Operacao.CREDITO,
+                    (descricao == null || descricao.isBlank())
+                            ? "Depósito em Cáixa" : descricao,
+                    valor);
 
-    // Lógica de transferência com verificação de tipo (instanceof)
-    public void transferir(double valor, Conta destino) {
-        // Regra: Conta Salário não pode ser destino
-        if (destino instanceof ContaSalario) {
-            System.out.println("ERRO: Não é permitido transferir valores para uma Conta Salário.");
-            return;
+        }else{
+            throw new OperacaoInvalida(String.format("Valor de depósito inválido: %.2f, Data: %s", valor, LocalDateTime.now()));
         }
 
-        if (this.sacar(valor)) {
-            destino.depositar(valor);
-            System.out.println("Transferência de R$ " + valor + " realizada com sucesso para " + destino.titular);
-        } else {
-            System.out.println("Falha na transferência: Saldo insuficiente.");
+
+    }
+    public void transferir(double valor, Conta destino) throws OperacaoInvalida {
+
+        if (destino == null) throw new OperacaoInvalida("Destinatário inexistente.");
+
+        if (destino.numeroConta.equals(this.getNumeroConta())) throw new OperacaoInvalida("Não pode transferir para si mesmo.");
+
+
+        if(destino instanceof ContaSalario){
+            throw new OperacaoInvalida("ERRO: Não é permitido transferir valores para uma Conta Salário.");
         }
+
+        this.sacar(valor, true);
+
+        destino.depositar(valor, "Transferência de: " + this.numeroConta);
+
+        this.adicionarTransacao(
+                    Operacao.DEBITO,
+                    "Transferência para: " +destino.getTitular().getNome() +" : " + destino.numeroConta,
+                    valor
+            );
+
+
+
+    } ;
+
+    public double getSaldo() {
+        return saldo;
     }
 
-    public void exibirSaldo() {
-        System.out.println("Conta de: " + this.titular + " | Saldo Atual: R$ " + String.format("%.2f", this.saldo));
+    public void adicionarTransacao(Operacao tipo, String descricao, double valor) throws OperacaoInvalida {
+        this.extrato.add(new Transacao(LocalDateTime.now(), descricao, valor, tipo));
     }
 
-    public String getTitular() {
-        return titular;
+    public Titular getTitular(){return this.titular;}
+    public UUID getNumeroConta(){return this.numeroConta;}
+    public ContaT getTipo(){
+        return this.tipo;
     }
+
+    public List<Transacao> getExtrato(){
+        return List.copyOf(extrato);
+    }
+
+
 }
