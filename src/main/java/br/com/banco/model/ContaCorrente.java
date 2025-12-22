@@ -1,31 +1,56 @@
 package br.com.banco.model;
 
+import br.com.banco.enums.ContaT;
+import br.com.banco.enums.Operacao;
+import br.com.banco.exceptions.OperacaoInvalida;
+
 public class ContaCorrente extends Conta {
-    private double limiteChequeEspecial;
 
-    public ContaCorrente(String titular, double limiteChequeEspecial) {
-        super(titular);
-        this.limiteChequeEspecial = limiteChequeEspecial;
-    }
+    protected double limiteChequeEspecial = 100;
 
-    @Override
-    public boolean sacar(double valor) {
-        double saldoDisponivel = this.saldo + this.limiteChequeEspecial;
-
-        if (valor > 0 && valor <= saldoDisponivel) {
-            this.saldo -= valor;
-            System.out.println("Saque de R$ " + valor + " realizado na Conta Corrente.");
-            return true;
-        } else {
-            System.out.println("Saldo insuficiente (incluindo cheque especial) para saque de R$ " + valor);
-            return false;
+    public ContaCorrente(Titular titular, double limiteChequeEspecial, ContaT tipo) {
+        super(titular, tipo);
+        if(limiteChequeEspecial > 0 && limiteChequeEspecial <= 500){
+            this.limiteChequeEspecial = limiteChequeEspecial;
         }
     }
 
     @Override
-    public void exibirSaldo() {
-        super.exibirSaldo();
-        System.out.println(" -> Limite Cheque Especial: R$ " + this.limiteChequeEspecial);
-        System.out.println(" -> Saldo Total Disponível: R$ " + (this.saldo + this.limiteChequeEspecial));
+    public void sacar(double valor, Boolean isTransferido) {
+        double saldoDisponivel = this.saldo + this.limiteChequeEspecial;
+
+        if( valor > 0 && valor <= saldoDisponivel ){
+
+
+            this.saldo -= valor;
+
+            if(!isTransferido){
+                this.adicionarTransacao(
+                        Operacao.DEBITO,
+                        "Saque de R$: " + valor + " realizado na Conta Corrente.",
+                        valor
+                );
+            }
+
+
+
+
+
+        } else{
+            throw new OperacaoInvalida("Falha na transferência: Saldo insuficiente.");
+        }
+
     }
+
+    public double getLimiteChequeEspecial() {
+        return limiteChequeEspecial;
+    }
+
+    public void setLimiteChequeEspecial(double limiteChequeEspecial) {
+        this.limiteChequeEspecial = limiteChequeEspecial;
+    }
+
+
+
+
 }

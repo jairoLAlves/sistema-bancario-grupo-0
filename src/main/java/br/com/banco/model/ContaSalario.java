@@ -1,22 +1,32 @@
 package br.com.banco.model;
 
+import br.com.banco.enums.ContaT;
+import br.com.banco.enums.Operacao;
+import br.com.banco.exceptions.OperacaoInvalida;
+
 public class ContaSalario extends Conta {
 
-    public ContaSalario(String titular) {
-        super(titular);
+    public ContaSalario(Titular titular, ContaT tipo) {
+        super(titular, tipo);
     }
 
     @Override
-    public boolean sacar(double valor) {
-        if (valor > 0 && valor <= this.saldo) {
+    public void sacar(double valor, Boolean isTransferido) {
+        if(valor > 0 && valor <= this.saldo){
             this.saldo -= valor;
-            System.out.println("Saque de R$ " + valor + " realizado na Conta Salário.");
-            return true;
-        } else {
-            System.out.println("Saldo insuficiente na Conta Salário.");
-            return false;
+
+            if(!isTransferido) {
+                this.adicionarTransacao(
+                        Operacao.DEBITO,
+                        "Saque de R$: " + valor + " realizado na Conta Salário.",
+                        valor
+                );
+            }
+
+
+        }else{
+            throw new OperacaoInvalida("Falha na transferência: Saldo insuficiente.");
         }
     }
 
-    // Conta Salário não tem métodos extras nem cheque especial.
 }
