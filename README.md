@@ -56,6 +56,21 @@ O Líder deve marcar as caixas abaixo conforme o grupo avança (`[x]`):
 
 - [x]  Tentativa de transferir valores para uma conta salário (operação não permitida).
 
+ ### Tratamento de Exceções:
+
+- [ ] Implemente mecanismos para capturar e tratar exceções, garantindo que o sistema não quebre em situações inesperadas.
+***Exemplo:*** Capturar tentativas de saque com valor inválido ou saldo insuficiente, impedir transferências para contas inexistentes ou contas salário, entre outros cenários comuns.
+
+### Estrutura de Dados para Extrato Bancário:
+
+- [ ] Utilize uma estrutura de dados apropriada (como listas, filas ou coleções) para armazenar e exibir um histórico de transações.
+
+
+- [ ] O extrato deve registrar operações como saques, depósitos e transferências e exibi-las sempre que for solicitado.
+
+### Criação de Interface Gráfica:
+
+- [ ] Desenvolva uma interface gráfica para o sistema, tornando a interação com o usuário mais intuitiva. A interface deve permitir operações como criação de contas, saques, depósitos, transferências e exibição do extrato bancário.
 
 ### Fase 3: Entrega
 - [x] Testes na `Main.java` realizados
@@ -64,3 +79,4 @@ O Líder deve marcar as caixas abaixo conforme o grupo avança (`[x]`):
 
 ---
 **🎥 Link do Vídeo:** (https://www.youtube.com/watch?v=Iy-bqElsqpc)
+**🎥 Link do Vídeo 2 :** ()
