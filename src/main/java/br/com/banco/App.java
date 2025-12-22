@@ -6,7 +6,7 @@ import br.com.banco.screen.HomeController;
 import br.com.banco.screen.LoginController;
 import br.com.banco.screen.TransferirController;
 import br.com.banco.services.ContaService;
-import br.com.banco.utils.Utils;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -28,7 +28,7 @@ public class App extends Application  {
     public final ContaController contaController = new ContaController();
     private Stage stage;
     public  Conta contaLogada = null;
-    private Utils utils = new Utils();
+
 
 
     @Override

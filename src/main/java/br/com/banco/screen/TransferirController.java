@@ -2,7 +2,7 @@ package br.com.banco.screen;
 
 import br.com.banco.App;
 import br.com.banco.model.Conta;
-import br.com.banco.utils.Utils;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -18,7 +18,7 @@ public class TransferirController  implements Initializable {
 
     private App mainApp;
     private Optional<Conta> destinatario;
-    private Utils utils = new Utils();
+
 
     private ObservableList<Conta> dadosDaLista = FXCollections.observableArrayList();
 
