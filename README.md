@@ -79,4 +79,4 @@ O Líder deve marcar as caixas abaixo conforme o grupo avança (`[x]`):
 
 ---
 **🎥 Link do Vídeo:** (https://www.youtube.com/watch?v=Iy-bqElsqpc)
-**🎥 Link do Vídeo 2 :** ( )
+**🎥 Link do Vídeo 2 :** ()

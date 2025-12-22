@@ -1,7 +1,6 @@
 package br.com.banco.screen;
 
 import br.com.banco.App;
-import br.com.banco.utils.Utils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
